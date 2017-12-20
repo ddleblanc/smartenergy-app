@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Value } from '../../models/value.model';
+import { EnergyService } from '../../services/energy.service';
 
 @Component({
   selector: 'app-energyGains',
@@ -7,16 +9,13 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class EnergyGainsComponent implements OnInit {
 
-  title = 'Energy Gain';
+  energy : any  = {} ;
+  dataArray : Value[] = [];
 
-  constructor(
-    private router: Router,
-    private route: ActivatedRoute,
-  ) { }
-
-  ngOnInit(): void {
+  constructor(private energyService : EnergyService){
 
   }
 
-
+  ngOnInit(){
+  }
 }

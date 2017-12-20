@@ -2,20 +2,24 @@
     <h1>{{title}}</h1>
   </div>
   
-  <div *ngIf="energyGains" class="col-sm-6">
+  <div class="col-sm-12">
     <table class="table table-hover">
       <thead>
         <tr>
-          <td>Naam</td>
+          <!-- <td>Naam</td> -->
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let energyGain of energyGains, let i = index">
-          <td>{{energyGain.name}}</td>
-        </tr>
+          <div class="row">
+            <div class="col-xs-3">
+                <app-energy-list></app-energy-list>
+            </div>
+            <div class="col-xs-9">
+              <router-outlet></router-outlet>
+            </div>  
+          </div>
       </tbody>
     </table>
   </div>
-  <div *ngIf="!energyGains">
-    Er zijn geen energy gains gevonden.
-  </div>
+
+  

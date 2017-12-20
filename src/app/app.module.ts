@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule, Routes } from '@angular/router';
 import { DropdownDirective } from './components/shared/dropdown.directive';
@@ -15,6 +17,12 @@ import { InvertersComponent } from './components/inverters/inverters.component';
 
 import { LocationsComponent } from './components/locations/locations.component';
 
+import { EnergyService } from './services/energy.service';
+import { EnergyListComponent } from './components/energyGains/energy-list/energy-list.component';
+import { EnergyItemComponent } from './components/energyGains/energy-list/energy-item/energy-item.component';
+import { EnergyDetailsComponent } from './components/energyGains/energy-details/energy-details.component';
+import { EnergyEditComponent } from './components/energyGains/energy-edit/energy-edit.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,13 +31,20 @@ import { LocationsComponent } from './components/locations/locations.component';
     AlertsComponent,
     EnergyGainsComponent,
     InvertersComponent,
-    LocationsComponent
+    LocationsComponent,
+    EnergyListComponent,
+    EnergyItemComponent,
+    EnergyDetailsComponent,
+    EnergyEditComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [EnergyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

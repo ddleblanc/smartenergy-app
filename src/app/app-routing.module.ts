@@ -8,11 +8,14 @@ import { InvertersComponent } from './components/inverters/inverters.component';
 import { Inverter } from './models/inverter.model';
 import { LocationsComponent } from './components/locations/locations.component';
 import { Location } from './models/location.model';
+import { EnergyDetailsComponent } from './components/energyGains/energy-details/energy-details.component';
 
 
 const appRoutes: Routes = [ 
   { path: 'alerts', component: AlertsComponent},
-  { path: 'energyGains', component: EnergyGainsComponent},
+  { path: 'energyGains', component: EnergyGainsComponent, children:[
+    { path: ':id', component: EnergyDetailsComponent}
+  ]},
   { path: 'inverters', component: InvertersComponent},
   { path: 'locations', component: LocationsComponent},
 ];
