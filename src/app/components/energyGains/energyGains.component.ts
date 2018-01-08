@@ -3,7 +3,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-energyGains',
-  templateUrl: './energyGains.component.html'
+  templateUrl: './energyGains.component.html',
+  styleUrls: ['./energyGains.component.css']
 })
 export class EnergyGainsComponent implements OnInit {
 
