@@ -7,7 +7,7 @@ import 'rxjs/add/operator/toPromise';
 export class EnergyService {
 
     private headers = new Headers({ 'Content-Type': 'application/json' });
-    private serverUrl = environment.serverUrl + '/solar-panel'; // URL to web api
+    private serverUrl = environment.serverUrl + '/solar-panels'; // URL to web api
     private AllEnergy = []
 
     constructor(private http: Http) { }
@@ -34,6 +34,18 @@ export class EnergyService {
         .catch(error => {
           return this.handleError(error);
         });
+    }
+
+    public GetEnergyById(id:String): Promise<any>{
+      return this.http.get(this.serverUrl + "/" + id, { headers: this.headers })
+      .toPromise()
+      .then(response => {
+        var energy = response.json();
+        return energy;
+      })
+      .catch(error => {
+        return this.handleError(error);
+      });
     }
 
     private handleError(error: any): Promise<any> {

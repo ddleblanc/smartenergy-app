@@ -2,17 +2,16 @@
     <h1>{{title}}</h1>
   </div>
   
-  <div class="col-sm-12">
+  <div *ngIf="Loaded" class="col-sm-12">
     <table class="table table-hover">
       <thead>
-        <tr>
-          <!-- <td>Naam</td> -->
-        </tr>
       </thead>
       <tbody>
           <div class="row">
             <div class="col-xs-3">
-                <app-energy-list></app-energy-list>
+                <app-energy-list
+                [inverter]="inverter"
+                ></app-energy-list>
             </div>
             <div class="col-xs-9">
               <router-outlet></router-outlet>
@@ -20,6 +19,10 @@
           </div>
       </tbody>
     </table>
+  </div>
+
+  <div *ngIf="!Loaded">
+    <p>loading ...</p>
   </div>
 
   

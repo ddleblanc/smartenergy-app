@@ -1,0 +1,11 @@
+<h1>
+    inverter-list
+</h1>
+  
+  <ul class="list-group">
+        <app-inverter-item
+        *ngFor="let inverterEl of inverters; let i = index"
+        [inverter]="inverterEl"
+        [index]="i"
+        ></app-inverter-item>
+  </ul>
