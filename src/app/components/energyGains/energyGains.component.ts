@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { EnergyService } from '../../services/energy.service';
+import { Inverter } from '../../models/inverter.model';
+import { InverterService } from '../../services/inverter.service';
+import { getLocaleExtraDayPeriodRules } from '@angular/common/src/i18n/locale_data_api';
 
 @Component({
   selector: 'app-energyGains',
@@ -7,17 +11,32 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./energyGains.component.css']
 })
 export class EnergyGainsComponent implements OnInit {
-
-  title = 'Energy Gain';
+  id:number
+  inverter: Inverter
+  Loaded = false;
 
   constructor(
-    private router: Router,
-    private route: ActivatedRoute,
-  ) { }
+    private inverterService: InverterService,
+    private route: ActivatedRoute){}
 
-  ngOnInit(): void {
-
+  ngOnInit(){
+    this.route
+    .queryParams
+    .subscribe(params => {
+      if(params['inverter']){
+        this.id = params['inverter'];
+        this.inverterService.GetInverter(this.id)
+        .then(inverter => {
+          this.inverter = inverter;
+          this.inverterService.setCurrentInverter(inverter);
+          this.Loaded = true;
+          console.log("inverter sn " + this.inverter.SN)
+        })
+        .catch(error => console.log(error));
+      }else{
+        this.inverter = this.inverterService.getCurrentInverter();
+        this.Loaded = true;
+      }
+    });
   }
-
-
 }

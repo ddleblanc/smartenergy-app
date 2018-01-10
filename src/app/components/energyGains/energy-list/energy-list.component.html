@@ -1,0 +1,12 @@
+<h1>
+  energy-list
+</h1>
+
+<ul class="list-group">
+      <app-energy-item
+      *ngFor="let energyEl of AllEnergy; let i = index"
+      [energy]="energyEl"
+      [index]="i"
+      ></app-energy-item>
+</ul>
+
