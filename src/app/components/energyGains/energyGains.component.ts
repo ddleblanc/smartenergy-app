@@ -7,7 +7,8 @@ import { getLocaleExtraDayPeriodRules } from '@angular/common/src/i18n/locale_da
 
 @Component({
   selector: 'app-energyGains',
-  templateUrl: './energyGains.component.html'
+  templateUrl: './energyGains.component.html',
+  styleUrls: ['./energyGains.component.css']
 })
 export class EnergyGainsComponent implements OnInit {
   id:number
