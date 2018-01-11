@@ -3,6 +3,7 @@ import { EnergyService } from '../../../services/energy.service';
 import { Router, Params, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { InverterService } from '../../../services/inverter.service';
+import { MasterDataService } from '../../../services/masterData.service';
 
 @Component({
   selector: 'app-energy-edit',
@@ -18,6 +19,7 @@ export class EnergyEditComponent implements OnInit {
   constructor(
     private energyService: EnergyService,
     private inverterService: InverterService, 
+    private masterdataService: MasterDataService,
     private router: Router, 
     private route : ActivatedRoute
   ) { }
@@ -31,6 +33,14 @@ export class EnergyEditComponent implements OnInit {
         this.initForm();
       }
     );
+  }
+
+  onSubmit(){
+    this.inverterService.GetSolarPanel(this.id)
+    .then(data => {
+      this.masterdataService.addEnergy(this.dataForm.value,data._id);
+    })
+    .catch(error => console.log(error))
   }
 
   private initForm() {
