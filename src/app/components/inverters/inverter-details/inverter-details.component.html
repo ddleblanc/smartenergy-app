@@ -1,0 +1,19 @@
+<div *ngIf="inverter">
+  <div class="col-xs-7">
+    <p>{{inverter.SN}}</p>
+    <p>{{inverter.DeviceName}}</p>
+    <p>{{inverter.Online}}</p>
+    <p>{{inverter.Location}}</p>
+    <p>{{inverter.DeviceModel}}</p>
+    <p>{{inverter.DisplaySoftwareVersion}}</p>
+    <p>{{inverter.MasterControlSoftwareVersion}}</p>
+    <p>{{inverter.SlaveControlVersion}}</p>
+  </div>
+  <div class="col-xs-5">
+    <button class="btn btn-primary" (click)="onInverterData()">Raw Data</button>
+  </div>
+</div>
+
+<div *ngIf="!inverter">
+  <p>er is iets mis gegaan !</p>
+</div>
