@@ -11,6 +11,7 @@ import { InverterService } from '../../../services/inverter.service';
 export class EnergyDetailsComponent implements OnInit {
   energy = null;
   id:number
+  Loaded = false;
 
   constructor(
     private energyService: EnergyService,
@@ -23,7 +24,10 @@ export class EnergyDetailsComponent implements OnInit {
       (params: Params) => {
         this.id = +params['id'];
         this.inverterService.GetSolarPanel(this.id)
-        .then(energy => this.energy = energy)
+        .then(energy => {
+          this.energy = energy;
+          this.Loaded = true;
+        })
         .catch(error => console.log(error));
       }
     )
