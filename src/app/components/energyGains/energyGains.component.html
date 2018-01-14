@@ -1,18 +1,18 @@
 <div class="page-header">
     <h1>{{title}}</h1>
   </div>
-  
-  <div class="col-sm-12">
+
+<div class="jumbotron">
+  <div *ngIf="Loaded" class="col-sm-6">
     <table class="table table-hover">
       <thead>
-        <tr>
-          <!-- <td>Naam</td> -->
-        </tr>
       </thead>
       <tbody>
           <div class="row">
             <div class="col-xs-3">
-                <app-energy-list></app-energy-list>
+                <app-energy-list
+                [inverter]="inverter"
+                ></app-energy-list>
             </div>
             <div class="col-xs-9">
               <router-outlet></router-outlet>
@@ -21,5 +21,8 @@
       </tbody>
     </table>
   </div>
-
-  
+  <div *ngIf="!Loaded">
+    Er zijn geen energy gains gevonden.
+  </div>
+</div>
+ <button class="btn">Add Energy Gain</button>  

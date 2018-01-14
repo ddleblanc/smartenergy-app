@@ -3,7 +3,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-locations',
-  templateUrl: './locations.component.html'
+  templateUrl: './locations.component.html',
+  styleUrls: ['./locations.component.css']
 })
 export class LocationsComponent implements OnInit {
 

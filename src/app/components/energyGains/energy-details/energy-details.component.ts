@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EnergyService } from '../../../services/energy.service';
 import { Router, Params, ActivatedRoute } from '@angular/router';
+import { InverterService } from '../../../services/inverter.service';
 
 @Component({
   selector: 'app-energy-details',
@@ -8,11 +9,13 @@ import { Router, Params, ActivatedRoute } from '@angular/router';
   styleUrls: ['./energy-details.component.css']
 })
 export class EnergyDetailsComponent implements OnInit {
-  energy
+  energy = null;
   id:number
+  Loaded = false;
 
   constructor(
-    private energyService: EnergyService, 
+    private energyService: EnergyService,
+    private inverterService: InverterService, 
     private router: Router, 
     private route : ActivatedRoute) { }
 
@@ -20,8 +23,11 @@ export class EnergyDetailsComponent implements OnInit {
     this.route.params.subscribe(
       (params: Params) => {
         this.id = +params['id'];
-        this.energyService.GetEnergy(this.id)
-        .then(energy => this.energy = energy)
+        this.inverterService.GetSolarPanel(this.id)
+        .then(energy => {
+          this.energy = energy;
+          this.Loaded = true;
+        })
         .catch(error => console.log(error));
       }
     )

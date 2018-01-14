@@ -22,6 +22,11 @@ import { EnergyListComponent } from './components/energyGains/energy-list/energy
 import { EnergyItemComponent } from './components/energyGains/energy-list/energy-item/energy-item.component';
 import { EnergyDetailsComponent } from './components/energyGains/energy-details/energy-details.component';
 import { EnergyEditComponent } from './components/energyGains/energy-edit/energy-edit.component';
+import { InverterListComponent } from './components/inverters/inverter-list/inverter-list.component';
+import { InverterItemComponent } from './components/inverters/inverter-list/inverter-item/inverter-item.component';
+import { InverterDetailsComponent } from './components/inverters/inverter-details/inverter-details.component';
+import { InverterService } from './services/inverter.service';
+import { MasterDataService } from './services/masterData.service';
 
 @NgModule({
   declarations: [
@@ -35,7 +40,10 @@ import { EnergyEditComponent } from './components/energyGains/energy-edit/energy
     EnergyListComponent,
     EnergyItemComponent,
     EnergyDetailsComponent,
-    EnergyEditComponent
+    EnergyEditComponent,
+    InverterListComponent,
+    InverterItemComponent,
+    InverterDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +52,11 @@ import { EnergyEditComponent } from './components/energyGains/energy-edit/energy
     HttpModule,
     AppRoutingModule
   ],
-  providers: [EnergyService],
+  providers: [
+    EnergyService,
+    InverterService,
+    MasterDataService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

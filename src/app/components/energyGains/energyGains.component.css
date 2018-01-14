@@ -1,0 +1,14 @@
+.jumbotron {
+  background-color: #eef1f7;
+}
+
+.btn {
+  background: linear-gradient(#FF0037, #BF0029); /* Standard syntax */
+    height: 50px;
+    border-radius: 6px;
+    color: WHITE;
+    width: 150px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+}
