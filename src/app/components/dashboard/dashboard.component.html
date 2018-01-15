@@ -1,42 +1,42 @@
 <div class="dashboard-container">
   <div class="row">
     <a routerLink='/locations' class="dash-button clickable">
-    <div class="col-md-4 card-container">
-      <div class="card">
-        <span class="fa fa-map-marker fa-4x location-fa"></span>
-        <h2 class="dashbutton-titles" translate>nav-locations</h2>
+      <div class="col-md-4 card-container">
+        <div class="card">
+          <span class="fa fa-map-marker fa-4x location-fa"></span>
+          <h2 class="dashbutton-titles" translate>nav-locations</h2>
+        </div>
       </div>
-    </div>
     </a>
     <a routerLink='/inverters' class="dash-button clickable">
-    <div class="col-md-4 card-container">
-      <div class="card">
-        <span class="fa fa-bolt fa-4x inverter-fa"></span>
-        <h2 class="dashbutton-titles" translate>nav-inverters</h2>
+      <div class="col-md-4 card-container">
+        <div class="card">
+          <span class="fa fa-bolt fa-4x inverter-fa"></span>
+          <h2 class="dashbutton-titles" translate>nav-inverters</h2>
+        </div>
       </div>
-    </div>
     </a>
     <a routerLink='/alerts' class="dash-button clickable">
-    <div class="col-md-4 card-container">
-      <div class="card">
-        <span class="fa fa-exclamation-triangle fa-4x alert-fa"></span>
-        <h2 class="dashbutton-titles" translate>nav-alerts</h2>
+      <div class="col-md-4 card-container">
+        <div class="card">
+          <span class="fa fa-exclamation-triangle fa-4x alert-fa"></span>
+          <h2 class="dashbutton-titles" translate>nav-alerts</h2>
+        </div>
       </div>
-    </div>
     </a>
-    <div class="col-md-6 card-container" [@go] = "state">
+    <div class="col-md-6 card-container" [@go]="state">
       <div *ngIf="chart" class="card" (click)="animate()">
         <h4 translate>total-gains-day</h4>
         <hr>
-  <canvas id="line">{{ chart }}</canvas>
-</div>
+        <canvas id="line">{{ chart }}</canvas>
+      </div>
     </div>
-    <div class="col-md-6 card-container" [@go] = "state">
+    <div class="col-md-6 card-container" [@go]="state">
       <div *ngIf="chart" class="card" (click)="animate()">
         <h4 translate>total-gains-location</h4>
         <hr>
-  <canvas id="doughnut">{{ chart }}</canvas>
-</div>
+        <canvas id="doughnut">{{ chart }}</canvas>
+      </div>
     </div>
   </div>
 </div>
