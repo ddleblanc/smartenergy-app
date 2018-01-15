@@ -10,8 +10,7 @@ import { trigger, state, style, transition, animate} from '@angular/animations'
   animations: [
     trigger('go', [
       state('invisible', style({
-        position: 'relative',
-                width: '50%'
+        position: 'relative'
       })),
       state('visible', style({
         margin: 'auto',
