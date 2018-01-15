@@ -1,0 +1,41 @@
+<div class="dashboard-container">
+  <div class="row"><a routerLink='/locations' class="dash-button clickable">
+    <div class="col-md-4 card-container">
+      <div class="card">
+        <span class="fa fa-map-marker fa-4x location-fa"></span>
+        <h1 class="dashbutton-titles" translate>nav-locations</h1>
+      </div>
+    </div>
+    </a>
+    <a routerLink='/inverters' class="dash-button clickable">
+    <div class="col-md-4 card-container">
+      <div class="card">
+        <span class="fa fa-bolt fa-4x inverter-fa"></span>
+        <h1 class="dashbutton-titles" translate>nav-inverters</h1>
+      </div>
+    </div>
+    </a>
+    <a routerLink='/alerts' class="dash-button clickable">
+    <div class="col-md-4 card-container">
+      <div class="card">
+        <span class="fa fa-exclamation-triangle fa-4x alert-fa"></span>
+        <h1 class="dashbutton-titles" translate>nav-alerts</h1>
+      </div>
+    </div>
+    </a>
+    <div class="col-md-6 card-container">
+      <div *ngIf="chart" class="card">
+        <h2 translate>total-gains-day</h2>
+        <hr>
+  <canvas id="line">{{ chart }}</canvas>
+</div>
+    </div>
+    <div class="col-md-6 card-container">
+      <div *ngIf="chart" class="card">
+        <h2 translate>total-gains-location</h2>
+        <hr>
+  <canvas id="doughnut">{{ chart }}</canvas>
+</div>
+    </div>
+  </div>
+</div>
