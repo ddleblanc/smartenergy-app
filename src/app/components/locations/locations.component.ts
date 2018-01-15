@@ -8,7 +8,29 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class LocationsComponent implements OnInit {
 
-  title = 'Locations';
+
+    settings = {
+    columns: {
+      id: {
+        title: 'ID'
+      },
+      name: {
+        title: 'Location'
+       }
+      }
+    };
+
+
+  data = [
+    {
+      id: 1,
+      name: "Avans Breda"
+    },
+    {
+      id: 2,
+      name: "Avans Nunspeet"
+    }
+  ];
 
   constructor(
     private router: Router,
