@@ -1,3 +1,18 @@
+/*////////////// ICON STYLE //////////////*/
+
+:host /deep/  i.faAddStyle {
+  color: #6ec138;
+}
+
+:host /deep/  i.faDeleteStyle {
+  color: #d32b26;
+}
+
+:host /deep/  i.faEditStyle {
+  color: #4484dd;
+}
+
+/*////////////// TABLE STYLE //////////////*/
 
 .container {
   margin-top: 120px;
