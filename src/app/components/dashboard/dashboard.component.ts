@@ -26,7 +26,7 @@ export class DashboardComponent implements OnInit {
                   {
                     data: [132,110,200,245, 350],
                     borderColor: "#BF0029",
-                    fill: false
+                    fill: true
                   },
                 ]
               },
