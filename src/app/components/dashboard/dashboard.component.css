@@ -1,6 +1,7 @@
 .dashboard-container {
-  padding-left: 64px;
-  padding-right: 64px;
+  padding-top: 32px;
+  padding-left:200px;
+  padding-right: 200px;
   background-color: lightgrey;
   min-height: 100vh;
 }
