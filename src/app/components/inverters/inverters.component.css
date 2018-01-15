@@ -1,14 +1,88 @@
-.jumbotron {
-  background-color: #eef1f7;
+/*////////////// ICON STYLE //////////////*/
+
+:host /deep/  i.faAddStyle {
+  color: #6ec138;
 }
 
-.btn {
-  background: linear-gradient(#FF0037, #BF0029); /* Standard syntax */
-    height: 50px;
-    border-radius: 6px;
-    color: WHITE;
-    width: 150px;
-    font-family: 'Roboto', sans-serif;
-    font-weight: bold;
-    font-size: 15px;
+:host /deep/  i.faDeleteStyle {
+  color: #d32b26;
+}
+
+:host /deep/  i.faEditStyle {
+  color: #4484dd;
+}
+
+/*////////////// TABLE STYLE //////////////*/
+
+.container {
+  margin-top: 120px;
+  border-radius: 15px;
+  padding: 20px;
+  height: 100%;
+  background-color: #FFFFFF;
+}
+
+hr {
+  width: 100%;
+  border-color: #9AC0BA;
+}
+
+.table {
+  color: white;
+  font-size: 15px;
+  margin-bottom: 0px;
+}
+
+.table-inverse {
+  background-color: #5B9496;
+}
+
+.table-striped>tbody>tr:nth-child(2n+1)>td, .table-striped>tbody>tr:nth-child(2n+1)>th {
+  background-color: #9AC0BA;
+}
+
+tbody>tr:hover {
+  background-color: #0A1827;
+}
+
+.table-striped>tbody>tr:nth-child(2n+1):hover>td, .table-striped>tbody>tr:nth-child(2n+1)>th {
+  background-color: #0A1827;
+}
+
+
+:host /deep/ ng2-smart-table tr  {
+   background-color: #f7f7f7;
+}
+
+:host /deep/ ng2-smart-table tr:nth-child(2n+1) {
+  background-color: #f1f1f1;
+}
+
+:host /deep/ ng2-smart-table table {
+   color: #0A1827;
+   font-size: 15px;
+}
+
+:host /deep/ ng2-smart-table a {
+   color: #0A1827;
+}
+
+:host /deep/ ng2-smart-table th {
+   border: solid 1px;
+   border-color: rgba(0, 0, 0, 0.2);
+}
+
+:host /deep/ ng2-smart-table td {
+   border: solid 1px;
+   border-color: rgba(0, 0, 0, 0.2);
+}
+
+:host /deep/ ng2-smart-table input {
+   background-color: #FBFBFB;
+   border-color: #A1A1A1;
+}
+
+:host /deep/ ng2-smart-table input::placeholder {
+   color: #363B40;
+   font-style: italic;
 }

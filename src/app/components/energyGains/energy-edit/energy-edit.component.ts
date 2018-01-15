@@ -4,7 +4,7 @@ import { Router, Params, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { InverterService } from '../../../services/inverter.service';
 import { MasterDataService } from '../../../services/masterData.service';
-import { EnergyGain } from '../../../models/energyGain.model';
+import { MasterData } from '../../../models/masterData.model'; 
 
 @Component({
   selector: 'app-energy-edit',
@@ -15,8 +15,7 @@ export class EnergyEditComponent implements OnInit {
 
   id:number
   editMode = false;
-  //sdataForm: FormGroup;
-  valueArray = [];
+  dataForm: FormGroup;
   @Input() energy = null;
   Loaded = false;
 
@@ -34,8 +33,7 @@ export class EnergyEditComponent implements OnInit {
       (params: Params) => {
         this.id = +params['id'];
         this.editMode = params['id'] != null;
-        this.valueArray = this.getValues(this.energy);
-        console.log(this.valueArray);
+        this.initForm();
         this.Loaded = true;
       }
     );
@@ -44,36 +42,22 @@ export class EnergyEditComponent implements OnInit {
   onSubmit(){
     this.inverterService.GetSolarPanel(this.id)
     .then(data => {
-      //this.masterdataService.addEnergy(this.dataForm.value,data._id);
+      this.masterdataService.addEnergy(this.dataForm.value,this.inverterService.getCurrentInverter());
     })
     .catch(error => console.log(error))
   }
 
-  private getValues(obj){
-    var valuesArray = []
-    var propertysArray = []
-    for(var x in obj){
-      console.log(x);
-      propertysArray.push(x);
-    }
+  private initForm() {
+      let dataName = '';
+      let dataTime = '';
+      let dataEnergy = '';
+      let dataRaw = this.energy;
 
-    propertysArray.forEach(p => {
-      var value = obj[p]
-
-      if(value === null){
-        value = "null"
-        valuesArray.push(value);
-      }else if(typeof(value) == "object"){
-        valuesArray.push(this.getValues(value))
-      }else if(value === undefined){
-      //doe niets
-      }else{
-        console.log("value = " + value);
-        valuesArray.push(value);
-      }
-    })
-    
-    return valuesArray
+      this.dataForm = new FormGroup({
+        'name': new FormControl(dataName, Validators.required),
+        'time': new FormControl(dataTime, Validators.required),
+        'energy': new FormControl(dataEnergy, Validators.required),
+        'raw': new FormControl(dataRaw)
+      });
   }
-
 }

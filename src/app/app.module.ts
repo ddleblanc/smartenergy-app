@@ -17,6 +17,7 @@ import { InvertersComponent } from './components/inverters/inverters.component';
 
 import { LocationsComponent } from './components/locations/locations.component';
 
+
 import { EnergyService } from './services/energy.service';
 import { EnergyListComponent } from './components/energyGains/energy-list/energy-list.component';
 import { EnergyItemComponent } from './components/energyGains/energy-list/energy-item/energy-item.component';
@@ -34,10 +35,14 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Ng2SmartTableModule } from 'ng2-smart-table';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
+
+
+
 
 @NgModule({
   declarations: [
@@ -65,6 +70,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppRoutingModule,
     HttpClientModule,
     AngularFontAwesomeModule,
+    Ng2SmartTableModule,
+    AngularFontAwesomeModule,
+    AppRoutingModule,
     BrowserAnimationsModule,
     TranslateModule.forRoot({
       loader: {
@@ -73,6 +81,8 @@ export function HttpLoaderFactory(http: HttpClient) {
         deps: [HttpClient]
       }
     })
+
+
   ],
   providers: [
     EnergyService,

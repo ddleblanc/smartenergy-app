@@ -1,17 +1,7 @@
-<hr>
-  <div class="col-sm-12">
-      <table class="table table-hover">
-        <thead>
-        </thead>
-        <tbody>
-            <div class="row">
-              <div class="col-xs-4">
-                  <app-inverter-list></app-inverter-list>
-              </div>
-              <div class="col-xs-8">
-                <router-outlet></router-outlet>
-              </div>
-            </div>
-        </tbody>
-      </table>
-    </div>
+<div class="container">
+  <h3 style="margin-bottom: 30px; color: #5b9496;">Inverters</h3>
+  <hr>
+  <div>
+    <ng2-smart-table  [settings]="settings" [source]="data"></ng2-smart-table>
+  </div>
+</div>

@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AlertsComponent } from './components/alerts/alerts.component';
 import { Alert } from './models/alert.model';
 import { EnergyGainsComponent } from './components/energyGains/energyGains.component';
-import { EnergyGain } from './models/energyGain.model';
+import { MasterData } from './models/masterData.model';
 import { InvertersComponent } from './components/inverters/inverters.component';
 import { Inverter } from './models/inverter.model';
 import { LocationsComponent } from './components/locations/locations.component';
