@@ -1,4 +1,5 @@
 import { Component, OnInit, Input} from '@angular/core';
+import { Inverter } from '../../../../models/inverter.model';
 
 @Component({
   selector: 'app-energy-item',
@@ -6,8 +7,8 @@ import { Component, OnInit, Input} from '@angular/core';
   styleUrls: ['./energy-item.component.css']
 })
 export class EnergyItemComponent implements OnInit {
-  @Input() energy
-  @Input() index
+  @Input() energy;
+  @Input() index;
 
   constructor() { }
 
