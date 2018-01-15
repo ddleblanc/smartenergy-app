@@ -3,7 +3,7 @@
     <div class="col-md-4 card-container">
       <div class="card">
         <span class="fa fa-map-marker fa-4x location-fa"></span>
-        <h1 class="dashbutton-titles" translate>nav-locations</h1>
+        <h2 class="dashbutton-titles" translate>nav-locations</h2>
       </div>
     </div>
     </a>
@@ -11,7 +11,7 @@
     <div class="col-md-4 card-container">
       <div class="card">
         <span class="fa fa-bolt fa-4x inverter-fa"></span>
-        <h1 class="dashbutton-titles" translate>nav-inverters</h1>
+        <h2 class="dashbutton-titles" translate>nav-inverters</h2>
       </div>
     </div>
     </a>
@@ -19,20 +19,20 @@
     <div class="col-md-4 card-container">
       <div class="card">
         <span class="fa fa-exclamation-triangle fa-4x alert-fa"></span>
-        <h1 class="dashbutton-titles" translate>nav-alerts</h1>
+        <h2 class="dashbutton-titles" translate>nav-alerts</h2>
       </div>
     </div>
     </a>
     <div class="col-md-6 card-container">
       <div *ngIf="chart" class="card">
-        <h2 translate>total-gains-day</h2>
+        <h4 translate>total-gains-day</h4>
         <hr>
   <canvas id="line">{{ chart }}</canvas>
 </div>
     </div>
     <div class="col-md-6 card-container">
       <div *ngIf="chart" class="card">
-        <h2 translate>total-gains-location</h2>
+        <h4 translate>total-gains-location</h4>
         <hr>
   <canvas id="doughnut">{{ chart }}</canvas>
 </div>

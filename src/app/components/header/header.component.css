@@ -2,13 +2,16 @@
   cursor: pointer;
   transform: scale(1.1);
 }
-.langButton:active {
+.langButton {
+  margin-top: 14px;
+  margin-left: 10px;
 }
 
 .pull-right {
-  position: absolute;
+  /* position: absolute;
   margin-top: 10px;
-  margin-left: 900px;
+  margin-left: 900px; */
+
 }
 
 .navbar-default {
