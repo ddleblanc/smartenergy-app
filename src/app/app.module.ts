@@ -27,6 +27,10 @@ import { InverterItemComponent } from './components/inverters/inverter-list/inve
 import { InverterDetailsComponent } from './components/inverters/inverter-details/inverter-details.component';
 import { InverterService } from './services/inverter.service';
 
+import { Ng2SmartTableModule } from 'ng2-smart-table';
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +53,9 @@ import { InverterService } from './services/inverter.service';
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
+    Ng2SmartTableModule,
     AppRoutingModule
+
   ],
   providers: [
     EnergyService,
