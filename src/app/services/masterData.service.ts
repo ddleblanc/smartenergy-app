@@ -2,17 +2,18 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, URLSearchParams } from '@angular/http';
 import { environment } from '../../environments/environment';
 import 'rxjs/add/operator/toPromise';
-import { EnergyGain } from '../models/energyGain.model';
+import { MasterData } from '../models/masterData.model';
 import { Subject } from 'rxjs';
+import { Inverter } from '../models/inverter.model';
 
 @Injectable()
 export class MasterDataService {
 
     private headers = new Headers({ 'Content-Type': 'application/json' });
     private serverUrl = environment.serverUrl + '/master-data'; // URL to web api
-    private AllEnergy : EnergyGain[] = []
+    private AllEnergy : MasterData[] = []
 
-    energyChanged = new Subject<EnergyGain[]>();
+    energyChanged = new Subject<MasterData[]>();
 
     constructor(private http: Http) { }
 
@@ -52,8 +53,9 @@ export class MasterDataService {
       });
     }
 
-    public addEnergy(energy: EnergyGain,rawdata : string){
-        this.http.post(this.serverUrl,{ headers : this.headers})
+    public addEnergy(energy: MasterData,inverter : Inverter){
+      console.log(energy);
+        this.http.post(this.serverUrl + "/" + inverter.SN ,{ name : energy.name, time : energy.time, energy : energy.energy, raw : energy.raw })
         .toPromise()
         .then(energy => {
             this.AllEnergy = energy.json()
