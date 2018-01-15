@@ -1,15 +1,34 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Chart } from 'chart.js';
+import { trigger, state, style, transition, animate} from '@angular/animations'
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.css'],
+  animations: [
+    trigger('go', [
+      state('invisible', style({
+        position: 'relative',
+                width: '50%'
+      })),
+      state('visible', style({
+        margin: 'auto',
+                width: '100%'
+      })),
+      transition('invisible <=> visible', animate('300ms ease-in'))
+    ])
+  ]
 })
 export class DashboardComponent implements OnInit {
 
   chart = [];
+  state: string = 'invisible';
+
+  animate(){
+    this.state = this.state == 'invisible' ? 'visible': 'invisible';
+  }
 
   constructor(private router: Router,
   private route: ActivatedRoute) { }
@@ -66,6 +85,9 @@ export class DashboardComponent implements OnInit {
                 });
 
     console.log(this.chart);
+
+
+
   }
 
   ngOnInit() {
