@@ -17,6 +17,7 @@ import { InvertersComponent } from './components/inverters/inverters.component';
 
 import { LocationsComponent } from './components/locations/locations.component';
 
+
 import { EnergyService } from './services/energy.service';
 import { EnergyListComponent } from './components/energyGains/energy-list/energy-list.component';
 import { EnergyItemComponent } from './components/energyGains/energy-list/energy-item/energy-item.component';
@@ -27,6 +28,11 @@ import { InverterItemComponent } from './components/inverters/inverter-list/inve
 import { InverterDetailsComponent } from './components/inverters/inverter-details/inverter-details.component';
 import { InverterService } from './services/inverter.service';
 import { MasterDataService } from './services/masterData.service';
+
+import { Ng2SmartTableModule } from 'ng2-smart-table';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+
+
 
 @NgModule({
   declarations: [
@@ -50,7 +56,10 @@ import { MasterDataService } from './services/masterData.service';
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
+    Ng2SmartTableModule,
+    AngularFontAwesomeModule,
     AppRoutingModule
+
   ],
   providers: [
     EnergyService,
