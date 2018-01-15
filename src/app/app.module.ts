@@ -26,6 +26,7 @@ import { InverterListComponent } from './components/inverters/inverter-list/inve
 import { InverterItemComponent } from './components/inverters/inverter-list/inverter-item/inverter-item.component';
 import { InverterDetailsComponent } from './components/inverters/inverter-details/inverter-details.component';
 import { InverterService } from './services/inverter.service';
+import { MasterDataService } from './services/masterData.service';
 
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 
@@ -59,7 +60,8 @@ import { Ng2SmartTableModule } from 'ng2-smart-table';
   ],
   providers: [
     EnergyService,
-    InverterService
+    InverterService,
+    MasterDataService
   ],
   bootstrap: [AppComponent]
 })
