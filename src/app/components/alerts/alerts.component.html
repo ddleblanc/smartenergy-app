@@ -1,5 +1,5 @@
 <div class="page-header">
-    <h1>{{title}}</h1>
+    <h1 translate>nav-alerts</h1>
   </div>
 <div class="jumbotron">
   <div *ngIf="alerts" class="col-sm-6">
@@ -16,8 +16,8 @@
       </tbody>
     </table>
   </div>
-  <div *ngIf="!alerts">
-    Er zijn geen alerts gevonden.
+  <div *ngIf="!alerts" translate>
+    no-alerts
   </div>
 </div>
- <button class="btn">Add Alert</button>  
+ <button class="btn" translate>add-alert</button>

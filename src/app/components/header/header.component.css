@@ -1,6 +1,21 @@
+.langButton:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+.langButton:active {
+}
+
+.pull-right {
+  position: absolute;
+  margin-top: 10px;
+  margin-left: 900px;
+}
+
 .navbar-default {
-  background-color: #BF0029;
+  background-color:#BF0029;
   border-bottom: 3px solid #7F001B;
+  margin-bottom: 0;
+  border-radius: 0;
 }
 
 .navbar-default .navbar-brand {
@@ -19,9 +34,7 @@
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus {
-    color: #ffff66;
-    text-decoration: underline;
-    text-decoration-color: #ffff66;
-    
-    background: linear-gradient(#FF0037, #BF0029);
+
+
+    background: rgba(0,0,0,0.2);
 }

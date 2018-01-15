@@ -1,5 +1,5 @@
 <div class="page-header">
-    <h1>{{title}}</h1>
+    <h1 translate>nav-locations</h1>
   </div>
 <div class="jumbotron">
   <div *ngIf="locations" class="col-sm-6">
@@ -16,8 +16,8 @@
       </tbody>
     </table>
   </div>
-  <div *ngIf="!locations">
-    Er zijn geen locations gevonden.
+  <div *ngIf="!locations" translate>
+    no-locations
   </div>
 </div>
- <button class="btn">Add Location</button>
+ <button class="btn" translate>add-location</button>

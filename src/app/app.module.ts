@@ -28,6 +28,17 @@ import { InverterDetailsComponent } from './components/inverters/inverter-detail
 import { InverterService } from './services/inverter.service';
 import { MasterDataService } from './services/masterData.service';
 
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,14 +54,25 @@ import { MasterDataService } from './services/masterData.service';
     EnergyEditComponent,
     InverterListComponent,
     InverterItemComponent,
-    InverterDetailsComponent
+    InverterDetailsComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    AngularFontAwesomeModule,
+    BrowserAnimationsModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [
     EnergyService,
