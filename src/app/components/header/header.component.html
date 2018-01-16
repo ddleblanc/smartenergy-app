@@ -10,15 +10,17 @@
         <a class="navbar-brand" href="/">{{ title }}</a>
       </div>
       <div class="collapse navbar-collapse navbar-menu-collapse">
-        <ul class="nav navbar-nav">
+        <!-- <ul class="nav navbar-nav">
 
 
           <li routerLinkActive='active' ><a routerLink='/dashboard' translate>Dashboard</a></li>
             <li routerLinkActive='active' ><a routerLink='/locations' translate>nav-locations</a></li>
             <li routerLinkActive='active' ><a routerLink='/inverters' translate>nav-inverters</a></li>
             <li routerLinkActive='active' ><a routerLink='/alerts' translate>nav-alerts</a></li>
-        </ul>
+        </ul> -->
         <ul class="nav navbar-nav pull-right">
+          <li><a href=""><span class="fa fa-user fa-2x"></span></a></li>
+          <li routerLinkActive='active' ><a routerLink='/users'>Avans Student</a></li>
   <li><img class="langButton" src="../../../assets/img/nl.svg" height="22" (click)="switchLanguage('nl')"></li>
             <li><img class="langButton" src="../../../assets/img/gb.svg" height="22" (click)="switchLanguage('en')"></li>
 

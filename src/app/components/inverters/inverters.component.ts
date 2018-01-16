@@ -71,6 +71,17 @@ export class InvertersComponent implements OnInit {
 
    }
 
+   onUserRowSelect(event): void {
+       console.log(event.data._id);
+       let id = event.data._id;
+       this._inverterService.GetInverter(id)
+       .then(inverter => { 
+        this._inverterService.setCurrentInverter(inverter);
+        this.router.navigate(['energyGains']),{relativeTo: this.route}
+       })
+       .catch(error => console.log(error))
+       
+   }
 
   ngOnInit(): void {
 

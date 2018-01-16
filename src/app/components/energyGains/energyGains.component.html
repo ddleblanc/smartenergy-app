@@ -8,10 +8,16 @@
       <thead>
       </thead>
       <tbody>
+        <div class="row">
+          <div class="col-xs-12">
+            <app-inverter-details
+            [inverter]="inverter"
+            ></app-inverter-details>
+          </div>
+        </div>
           <div class="row">
             <div class="col-xs-4">
                 <app-energy-list
-                [inverter]="inverter"
                 ></app-energy-list>
             </div>
             <div class="col-xs-8">
