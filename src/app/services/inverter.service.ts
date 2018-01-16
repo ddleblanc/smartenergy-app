@@ -34,9 +34,9 @@ export class InverterService {
         return this.handleError(error);
       });
     }
-    
-    public GetInverter(index:number): Promise<any>{
-        return this.http.get(this.serverUrl + "/" + this.inverters[index]._id, { headers: this.headers })
+
+    public GetInverter(id:string): Promise<any>{
+        return this.http.get(this.serverUrl + "/" + id, { headers: this.headers })
         .toPromise()
         .then(response => {
           var inverter = response.json();
@@ -47,8 +47,8 @@ export class InverterService {
         });
     }
 
-    public GetSolarPanels(inverter:Inverter):Promise<any>{
-        return this.http.get(this.serverUrl + "/" + inverter._id + "/solar-panels", { headers: this.headers})
+    public GetSolarPanels(id: string):Promise<any>{
+        return this.http.get(this.serverUrl + "/" + id + "/solar-panels", { headers: this.headers})
         .toPromise()
         .then(response => {
             this.solarPanels = response.json();
