@@ -54,6 +54,7 @@ export class LocationsComponent implements OnInit {
     }
   ];
 
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -70,3 +71,4 @@ export class LocationsComponent implements OnInit {
 
 
 }
+
