@@ -23,6 +23,17 @@ export class InverterService {
       return this.current;
     }
 
+    public Export(): Promise<any>{
+      return this.http.get(this.serverUrl + "/export", { headers: this.headers })
+      .toPromise()
+      .then(response => {
+        return response.json();
+      })
+      .catch(error => {
+        return this.handleError(error);
+      });
+    }
+
     public GetInverters(): Promise<any>{
       return this.http.get(this.serverUrl, { headers: this.headers })
       .toPromise()
@@ -68,6 +79,24 @@ export class InverterService {
       .catch(error => console.log(error));
     }
 
+    public GetTotalEnergy(id:string):Promise<any>{
+      return this.http.get(this.serverUrl+ "/" + id + "/total", { headers: this.headers})
+      .toPromise()
+      .then(response => {
+        return response.json();
+      })
+      .catch(error => console.log(error));
+    }
+
+    public GetMonthEnergy(id:string,month: number):Promise<any>{
+      return this.http.get(this.serverUrl+ "/" + id + "/energy/" + month, { headers: this.headers})
+      .toPromise()
+      .then(response => {
+        return response.json();
+      })
+      .catch(error => console.log(error));
+    }
+    
     private handleError(error: any): Promise<any> {
         console.log('handleError');
         return Promise.reject(error.message || error);

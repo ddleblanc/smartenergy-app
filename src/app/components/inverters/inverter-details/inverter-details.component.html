@@ -1,7 +1,8 @@
 <div *ngIf="inverter">
-  <div class="col-xs-7">
+  <h1>{{inverter.DeviceName}}</h1>
+
+  <div class="col-xs-5">
     <p>{{inverter.SN}}</p>
-    <p>{{inverter.DeviceName}}</p>
     <p>{{inverter.Online}}</p>
     <p>{{inverter.Location}}</p>
     <p>{{inverter.DeviceModel}}</p>
@@ -9,8 +10,11 @@
     <p>{{inverter.MasterControlSoftwareVersion}}</p>
     <p>{{inverter.SlaveControlVersion}}</p>
   </div>
-  <div class="col-xs-5">
-    <button class="btn btn-primary" (click)="onInverterData()">Raw Data</button>
+
+  <div *ngIf="Loaded" class="col-xs-7">
+    <h1>Master data</h1>
+    <h3>totaal onvangen energy : {{totalEnergy}}</h3>
+    <h3>januari : {{Januari}}</h3>
   </div>
 </div>
 
