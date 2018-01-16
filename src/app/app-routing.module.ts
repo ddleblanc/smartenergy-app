@@ -10,17 +10,19 @@ import { LocationsComponent } from './components/locations/locations.component';
 import { Location } from './models/location.model';
 import { EnergyDetailsComponent } from './components/energyGains/energy-details/energy-details.component';
 import { InverterDetailsComponent } from './components/inverters/inverter-details/inverter-details.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 
-const appRoutes: Routes = [ 
+const appRoutes: Routes = [
   { path: 'alerts', component: AlertsComponent},
   { path: 'energyGains', component: EnergyGainsComponent, children:[
     { path: ':id', component: EnergyDetailsComponent}
   ]},
-  { path: 'inverters', component: InvertersComponent, children: [ 
+  { path: 'inverters', component: InvertersComponent, children: [
     { path: ':id', component: InverterDetailsComponent}
   ]},
   { path: 'locations', component: LocationsComponent},
+  { path: 'dashboard', component: DashboardComponent},
 ];
 
 @NgModule({
@@ -29,4 +31,4 @@ const appRoutes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule { } 
+export class AppRoutingModule { }

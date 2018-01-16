@@ -35,7 +35,7 @@ export class LocationsComponent implements OnInit {
       },
       inverters: {
         title: 'Inverters',
-        
+
 
        }
       }
