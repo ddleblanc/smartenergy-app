@@ -1,0 +1,10 @@
+<div *ngIf='Loaded'>
+    <div class = "col-xs-5">
+        <pre>{{energy | json}}</pre>
+    </div>
+    <div class = "col-xs-7">
+        <app-energy-edit
+        [energy]="energy"
+        ></app-energy-edit>
+    </div>
+</div>
