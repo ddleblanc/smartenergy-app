@@ -35,7 +35,7 @@ export class LocationsComponent implements OnInit {
       },
       inverters: {
         title: 'Inverters',
-        
+
 
        }
       }
@@ -54,11 +54,16 @@ export class LocationsComponent implements OnInit {
     }
   ];
 
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
   ) { }
 
+  onUserRowSelect(event): void {
+      console.log(event);
+      // this.router.navigate(['inverters', event]),{relativeTo: this.route}
+  }
 
   ngOnInit(): void {
 
@@ -66,3 +71,4 @@ export class LocationsComponent implements OnInit {
 
 
 }
+

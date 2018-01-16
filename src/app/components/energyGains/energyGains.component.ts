@@ -11,7 +11,7 @@ import { getLocaleExtraDayPeriodRules } from '@angular/common/src/i18n/locale_da
   styleUrls: ['./energyGains.component.css']
 })
 export class EnergyGainsComponent implements OnInit {
-  id:number
+  id:string
   inverter: Inverter
   Loaded = false;
 
@@ -23,8 +23,8 @@ export class EnergyGainsComponent implements OnInit {
     this.route
     .queryParams
     .subscribe(params => {
-      if(params['inverter']){
-        this.id = params['inverter'];
+        console.log('asdjfdds')
+        this.id = '5a56638dd8504b223c3c76ee'//params['id'];
         this.inverterService.GetInverter(this.id)
         .then(inverter => {
           this.inverter = inverter;
@@ -33,10 +33,6 @@ export class EnergyGainsComponent implements OnInit {
           console.log("inverter sn " + this.inverter.SN)
         })
         .catch(error => console.log(error));
-      }else{
-        this.inverter = this.inverterService.getCurrentInverter();
-        this.Loaded = true;
-      }
     });
   }
 }

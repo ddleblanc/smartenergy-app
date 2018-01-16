@@ -15,7 +15,11 @@ import { EnergyGainsComponent } from './components/energyGains/energyGains.compo
 
 import { InvertersComponent } from './components/inverters/inverters.component';
 
+import { LocationService } from './services/location.service';
 import { LocationsComponent } from './components/locations/locations.component';
+import { LocationListComponent } from './components/locations/location-list/location-list.component';
+import { LocationItemComponent } from './components/locations/location-list/location-item/location-item.component';
+import { LocationDetailComponent } from './components/locations/location-details/location-details.component';
 
 
 import { EnergyService } from './services/energy.service';
@@ -29,8 +33,19 @@ import { InverterDetailsComponent } from './components/inverters/inverter-detail
 import { InverterService } from './services/inverter.service';
 import { MasterDataService } from './services/masterData.service';
 
-import { Ng2SmartTableModule } from 'ng2-smart-table';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Ng2SmartTableModule } from 'ng2-smart-table';
+import { SidenavComponent } from './components/sidenav/sidenav.component';
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
+
 
 
 
@@ -43,28 +58,47 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
     EnergyGainsComponent,
     InvertersComponent,
     LocationsComponent,
+    LocationListComponent,
+    LocationItemComponent,
+    LocationDetailComponent,
     EnergyListComponent,
     EnergyItemComponent,
     EnergyDetailsComponent,
     EnergyEditComponent,
     InverterListComponent,
     InverterItemComponent,
-    InverterDetailsComponent
+    InverterDetailsComponent,
+    DashboardComponent,
+    SidenavComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
+    AppRoutingModule,
+    HttpClientModule,
+    AngularFontAwesomeModule,
     Ng2SmartTableModule,
     AngularFontAwesomeModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
+
 
   ],
   providers: [
     EnergyService,
     InverterService,
-    MasterDataService
+    MasterDataService,
+    LocationService
+
   ],
   bootstrap: [AppComponent]
 })

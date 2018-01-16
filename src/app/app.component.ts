@@ -6,7 +6,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  constructor(
-  ) { }
+  user = {
+    name: 'Arthur',
+    age: 42
+  };
+
+  constructor() {
+  }
 
 }
