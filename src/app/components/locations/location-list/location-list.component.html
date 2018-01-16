@@ -1,0 +1,11 @@
+<h1>
+    Location-list
+</h1>
+  
+  <ul class="list-group">
+        <app-location-item
+        *ngFor="let locationEl of locations; let i = index"
+        [location]="locationEl"
+        [index]="i"
+        ></app-location-item>
+  </ul>

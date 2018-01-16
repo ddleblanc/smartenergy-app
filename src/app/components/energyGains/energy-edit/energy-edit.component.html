@@ -1,26 +1,5 @@
 <div *ngIf="Loaded" class="row">
     <div class="col-xs-12">
-<<<<<<< HEAD
-        <div class="col-xs-12">
-
-          </div>
-        <div *ngFor="let value of valueArray">
-          	<input type="text" value={{value}} readonly>
-            <select name="master" id="">
-              <option value=""></option>
-              <option value="name">ID</option>
-  <option value="name">Name</option>
-  <option value="energy">Energy</option>
-  <option value="time">Time</option>
-
-            </select>
-        </div>
-        <button
-          type="submit"
-          class="btn btn-success"
-          (click)="onSubmit()">Save</button>
-        <button type="button" class="btn btn-danger" (click)="onCancel()">Cancel</button>
-=======
           <form [formGroup]="dataForm" (ngSubmit)="onSubmit()">
               <div class="row">
                 <div class="col-xs-12">
@@ -53,6 +32,5 @@
                   </div>
                 </div>
             </form>
->>>>>>> origin/development
     </div>
 </div>

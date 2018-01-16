@@ -8,6 +8,7 @@ import { InvertersComponent } from './components/inverters/inverters.component';
 import { Inverter } from './models/inverter.model';
 import { LocationsComponent } from './components/locations/locations.component';
 import { Location } from './models/location.model';
+import { LocationDetailComponent } from './components/locations/location-details/location-details.component';
 import { EnergyDetailsComponent } from './components/energyGains/energy-details/energy-details.component';
 import { InverterDetailsComponent } from './components/inverters/inverter-details/inverter-details.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -21,8 +22,10 @@ const appRoutes: Routes = [
   { path: 'inverters', component: InvertersComponent, children: [
     { path: ':id', component: InverterDetailsComponent}
   ]},
+
   { path: 'locations', component: LocationsComponent},
   { path: 'dashboard', component: DashboardComponent},
+
 ];
 
 @NgModule({

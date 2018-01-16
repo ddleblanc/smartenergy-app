@@ -1,14 +1,15 @@
 {
-    "Title": "Translation example",
-    "Intro": "Hello I am {{name}}, I am {{age}} years old.",
-    "nav-locations": "Locations",
-    "nav-inverters": "Inverters",
-    "nav-energyGains": "Energy Gains",
-    "nav-alerts": "Alerts",
-    "no-locations": "No locations found.",
-    "no-alerts": "No alerts found.",
-    "add-location": "Add location",
-    "add-alert": "Add alert",
-    "total-gains-day": "Total energy gain / Days",
-    "total-gains-location": "Total energy gains / Locations"
+  "Title": "Translation example",
+  "Intro": "Hello I am {{name}}, I am {{age}} years old.",
+  "nav-locations": "Locations",
+  "nav-inverters": "Inverters",
+  "nav-energyGains": "Energy Gains",
+  "nav-alerts": "Alerts",
+  "nav-users": "Users",
+  "no-locations": "No locations found.",
+  "no-alerts": "No alerts found.",
+  "add-location": "Add location",
+  "add-alert": "Add alert",
+  "total-gains-day": "Total energy gain / Days",
+  "total-gains-location": "Total energy gains / Locations"
 }
