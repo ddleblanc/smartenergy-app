@@ -1,23 +1,55 @@
-<div class="page-header">
-    <h1>{{title}}</h1>
-  </div>
-<div class="jumbotron">
-  <div *ngIf="alerts" class="col-sm-6">
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <td>Naam</td>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let alert of alerts, let i = index">
-          <td>{{alert.name}}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <div *ngIf="!alerts">
-    Er zijn geen alerts gevonden.
+<div class="container">
+  <h3 style="margin-bottom: 30px; color: #5b9496;" translate>nav-alerts</h3>
+  <hr>
+  <div>
+    <ng2-smart-table  [settings]="settings" [source]="data"></ng2-smart-table>
   </div>
 </div>
- <button class="btn">Add Alert</button>  
+
+
+
+
+
+<!--
+ <div *ngIf="alerts" class="col-sm-6">
+   <table class="table table-hover">
+     <thead>
+       <tr>
+         <td>Naam</td>
+       </tr>
+     </thead>
+     <tbody>
+       <tr *ngFor="let alert of alerts, let i = index">
+         <td>{{alert.name}}</td>
+       </tr>
+     </tbody>
+   </table>
+ </div>
+ <div *ngIf="!alerts">
+   Er zijn geen alerts gevonden.
+ </div> --->
+<!--
+<table class="table table-hover table-striped table-inverse table-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Name</th>
+      <th>Date</th>
+      <th>Code</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><button class="btn">Edit</button></td>
+      <td>Warning</td>
+      <td>11/12/2017</td>
+      <td>183201</td>
+    </tr>
+    <tr>
+      <td>Warning</td>
+      <td>23/04/2017</td>
+      <td>383920</td>
+    </tr>
+  </tbody>
+</table>
+--->

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default" role="navigation">
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-menu-collapse">
@@ -11,10 +11,17 @@
       </div>
       <div class="collapse navbar-collapse navbar-menu-collapse">
         <ul class="nav navbar-nav">
-            <li routerLinkActive='active' ><a routerLink='/locations'>Locations</a></li>
-            <li routerLinkActive='active' ><a routerLink='/inverters'>Inverters</a></li>
-            <li routerLinkActive='active' ><a routerLink='/energyGains'>Energy Gains</a></li>
-            <li routerLinkActive='active' ><a routerLink='/alerts'>Alerts</a></li>
+
+
+          <li routerLinkActive='active' ><a routerLink='/dashboard' translate>Dashboard</a></li>
+            <li routerLinkActive='active' ><a routerLink='/locations' translate>nav-locations</a></li>
+            <li routerLinkActive='active' ><a routerLink='/inverters' translate>nav-inverters</a></li>
+            <li routerLinkActive='active' ><a routerLink='/alerts' translate>nav-alerts</a></li>
+        </ul>
+        <ul class="nav navbar-nav pull-right">
+  <li><img class="langButton" src="../../../assets/img/nl.svg" height="22" (click)="switchLanguage('nl')"></li>
+            <li><img class="langButton" src="../../../assets/img/gb.svg" height="22" (click)="switchLanguage('en')"></li>
+
         </ul>
       </div>
     </div>

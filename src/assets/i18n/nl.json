@@ -1,0 +1,14 @@
+{
+    "Title": "Vertaling voorbeeld",
+    "Intro": "Hallo mijn naam is {{name}}, ik ben {{age}} jaar oud.",
+    "nav-locations": "Locaties",
+    "nav-inverters": "Omvormers",
+    "nav-energyGains": "Energie Winst",
+    "nav-alerts": "Waarschuwingen",
+    "no-locations": "Er zijn geen locations gevonden.",
+    "no-alerts": "Er zijn geen waarschuwingen gevonden.",
+    "add-location": "Voeg locatie toe",
+    "add-alert": "Voeg toe",
+    "total-gains-day": "Totale energieopbrengst per dag",
+    "total-gains-location": "Totale energieopbrengst per locatie"
+}

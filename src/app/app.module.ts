@@ -21,6 +21,7 @@ import { LocationListComponent } from './components/locations/location-list/loca
 import { LocationItemComponent } from './components/locations/location-list/location-item/location-item.component';
 import { LocationDetailComponent } from './components/locations/location-details/location-details.component';
 
+
 import { EnergyService } from './services/energy.service';
 import { EnergyListComponent } from './components/energyGains/energy-list/energy-list.component';
 import { EnergyItemComponent } from './components/energyGains/energy-list/energy-item/energy-item.component';
@@ -30,6 +31,22 @@ import { InverterListComponent } from './components/inverters/inverter-list/inve
 import { InverterItemComponent } from './components/inverters/inverter-list/inverter-item/inverter-item.component';
 import { InverterDetailsComponent } from './components/inverters/inverter-details/inverter-details.component';
 import { InverterService } from './services/inverter.service';
+import { MasterDataService } from './services/masterData.service';
+
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Ng2SmartTableModule } from 'ng2-smart-table';
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
+
+
+
 
 @NgModule({
   declarations: [
@@ -49,19 +66,37 @@ import { InverterService } from './services/inverter.service';
     EnergyEditComponent,
     InverterListComponent,
     InverterItemComponent,
-    InverterDetailsComponent
+    InverterDetailsComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    AngularFontAwesomeModule,
+    Ng2SmartTableModule,
+    AngularFontAwesomeModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
+
+
   ],
   providers: [
     EnergyService,
     InverterService,
+    MasterDataService,
     LocationService
+
   ],
   bootstrap: [AppComponent]
 })
