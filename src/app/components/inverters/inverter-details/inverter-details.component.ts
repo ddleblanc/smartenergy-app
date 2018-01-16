@@ -10,17 +10,17 @@ import { Inverter } from '../../../models/inverter.model';
 })
 export class InverterDetailsComponent implements OnInit {
   inverter:Inverter
-  id:number
+  id:string
 
   constructor(
-    private inverterService: InverterService, 
-    private router: Router, 
+    private inverterService: InverterService,
+    private router: Router,
     private route : ActivatedRoute) { }
 
   ngOnInit() {
     this.route.params.subscribe(
       (params: Params) => {
-        this.id = +params['id'];
+        this.id = +params['id'] + '';
         this.inverterService.GetInverter(this.id)
         .then(inverter => {
           this.inverter = inverter
