@@ -15,7 +15,11 @@ import { EnergyGainsComponent } from './components/energyGains/energyGains.compo
 
 import { InvertersComponent } from './components/inverters/inverters.component';
 
+import { LocationService } from './services/location.service';
 import { LocationsComponent } from './components/locations/locations.component';
+import { LocationListComponent } from './components/locations/location-list/location-list.component';
+import { LocationItemComponent } from './components/locations/location-list/location-item/location-item.component';
+import { LocationDetailComponent } from './components/locations/location-details/location-details.component';
 
 import { EnergyService } from './services/energy.service';
 import { EnergyListComponent } from './components/energyGains/energy-list/energy-list.component';
@@ -36,6 +40,9 @@ import { InverterService } from './services/inverter.service';
     EnergyGainsComponent,
     InvertersComponent,
     LocationsComponent,
+    LocationListComponent,
+    LocationItemComponent,
+    LocationDetailComponent,
     EnergyListComponent,
     EnergyItemComponent,
     EnergyDetailsComponent,
@@ -53,7 +60,8 @@ import { InverterService } from './services/inverter.service';
   ],
   providers: [
     EnergyService,
-    InverterService
+    InverterService,
+    LocationService
   ],
   bootstrap: [AppComponent]
 })

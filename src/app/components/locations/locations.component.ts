@@ -10,6 +10,7 @@ export class LocationsComponent implements OnInit {
 
   title = 'Locations';
 
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -21,3 +22,4 @@ export class LocationsComponent implements OnInit {
 
 
 }
+
