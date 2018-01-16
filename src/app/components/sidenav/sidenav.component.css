@@ -1,0 +1,48 @@
+
+.sidenav-container {
+  margin-top: 70px;
+  margin-left: 0;
+  width: 100%;
+
+}
+
+.card {
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 10px;
+  background-color: #BF0029;
+}
+
+.sidenav {
+  min-height: 800px;
+}
+
+.vertical-menu a {
+    color: white; /* Black text color */
+    display: block; /* Make the links appear below each other */
+    padding: 12px; /* Add some padding */
+    text-decoration: none; /* Remove underline from links */
+    border-bottom: solid 1px;
+    font-weight: bold;
+
+}
+
+.vertical-menu a:hover {
+    background: rgba(0,0,0,0.2); /* Dark grey background on mouse-over */
+}
+
+.vertical-menu a.active {
+    background: rgba(0,0,0,0.2); /* Add a green color to the "active/current" link */
+    color: white;
+}
+
+/*////////////// MD STYLE //////////////*/
+
+@media (max-width: 1000px) {
+
+  .sidenav-container {
+    display: none;
+
+  }
+
+ }

@@ -9,7 +9,7 @@ import { InverterService } from '../../../services/inverter.service';
   styleUrls: ['./energy-list.component.css']
 })
 export class EnergyListComponent implements OnInit {
-  @Input() inverter
+  //@Input() inverter
   ids = [];
   AllEnergy = [];
   loaded = false
@@ -19,9 +19,9 @@ export class EnergyListComponent implements OnInit {
     private inverterService: InverterService) { }
 
   ngOnInit() {
-    this.inverterService.GetSolarPanels(this.inverter)
-    .then(AllData => 
-      { 
+    this.inverterService.GetSolarPanels(this.inverterService.getCurrentInverter()._id)
+    .then(AllData =>
+      {
         this.ids = AllData;
         console.log(AllData);
         this.ids.forEach(id => {
