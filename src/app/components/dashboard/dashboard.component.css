@@ -16,8 +16,12 @@
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.dashbutton-titles {
+.dash-button-title {
   color: #455A64;
+}
+
+.dash-button-icon {
+
 }
 
 .fa {
@@ -27,7 +31,7 @@
 }
 
 .location-fa {
-  color: #065572;
+  color: #2980b9;
 
 }
 
