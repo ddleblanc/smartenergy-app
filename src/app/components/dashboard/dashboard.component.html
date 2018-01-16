@@ -1,34 +1,42 @@
 <div class="dashboard-container">
   <div class="row">
     <a routerLink='/locations' class="dash-button clickable">
-      <div class="col-md-4 card-container">
+      <div class="col-md-3 card-container">
         <div class="card">
           <div class="dash-button-icon">
           <span class="fa fa-map-marker fa-4x location-fa"></span>
           </div>
-          <h2 class="dash-button-title" translate>nav-locations</h2>
+          <h4 class="dash-button-title" translate>nav-locations</h4>
         </div>
       </div>
     </a>
     <a routerLink='/inverters' class="dash-button clickable">
-      <div class="col-md-4 card-container">
+      <div class="col-md-3 card-container">
         <div class="card">
           <span class="fa fa-bolt fa-4x inverter-fa"></span>
-          <h2 class="dash-button-title" translate>nav-inverters</h2>
+          <h4 class="dash-button-title" translate>nav-inverters</h4>
         </div>
       </div>
     </a>
     <a routerLink='/alerts' class="dash-button clickable">
-      <div class="col-md-4 card-container">
+      <div class="col-md-3 card-container">
         <div class="card">
           <span class="fa fa-exclamation-triangle fa-4x alert-fa"></span>
-          <h2 class="dash-button-title" translate>nav-alerts</h2>
+          <h4 class="dash-button-title" translate>nav-alerts</h4>
+        </div>
+      </div>
+    </a>
+    <a routerLink='/alerts' class="dash-button clickable">
+      <div class="col-md-3 card-container">
+        <div class="card">
+          <span class="fa fa-user fa-4x user-fa"></span>
+          <h4 class="dash-button-title" translate>nav-users</h4>
         </div>
       </div>
     </a>
     <div class="col-md-6 card-container" [@go]="state">
       <div *ngIf="chart" class="card" (click)="animate()">
-        <h4 translate>total-gains-day</h4>
+        <h4 class="chart-title" translate>total-gains-day</h4>
         <hr>
         <canvas id="line">{{ chart }}</canvas>
       </div>

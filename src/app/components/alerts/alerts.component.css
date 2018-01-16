@@ -15,9 +15,10 @@
 /*////////////// TABLE STYLE //////////////*/
 
 .container {
-  margin-top: 120px;
-  border-radius: 15px;
-  padding: 20px;
+  margin-top: 80px;
+  border-radius: 5px;
+  padding-bottom: 10px;
+  margin-left: 0px;
   height: 100%;
   background-color: #FFFFFF;
 }
@@ -46,16 +47,24 @@ tbody>tr:hover {
 }
 
 .table-striped>tbody>tr:nth-child(2n+1):hover>td, .table-striped>tbody>tr:nth-child(2n+1)>th {
-  background-color: #0A1827;
+  background-color:  #FFFFFF;
 }
 
 
 :host /deep/ ng2-smart-table tr  {
-   background-color: #f7f7f7;
+   background-color: #ffffff;
+}
+
+:host /deep/ ng2-smart-table tr:hover  {
+   background-color: rgba(50,50,50,0.1);
 }
 
 :host /deep/ ng2-smart-table tr:nth-child(2n+1) {
-  background-color: #f1f1f1;
+  background-color: #f7f7f7;
+}
+
+:host /deep/ ng2-smart-table tr:nth-child(2n+1):hover {
+  background-color: rgba(50,50,50,0.1);
 }
 
 :host /deep/ ng2-smart-table table {
@@ -69,12 +78,13 @@ tbody>tr:hover {
 
 :host /deep/ ng2-smart-table th {
    border: solid 1px;
-   border-color: rgba(0, 0, 0, 0.2);
+   border-color: #ebeef2;
+   background-color: #ffffff;
 }
 
 :host /deep/ ng2-smart-table td {
    border: solid 1px;
-   border-color: rgba(0, 0, 0, 0.2);
+   border-color: #ebeef2;
 }
 
 :host /deep/ ng2-smart-table input {
