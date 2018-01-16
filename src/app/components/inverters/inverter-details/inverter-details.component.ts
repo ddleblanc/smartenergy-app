@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { InverterService } from '../../../services/inverter.service';
 import { Params, Router, ActivatedRoute } from '@angular/router';
 import { Inverter } from '../../../models/inverter.model';
@@ -9,8 +9,12 @@ import { Inverter } from '../../../models/inverter.model';
   styleUrls: ['./inverter-details.component.css']
 })
 export class InverterDetailsComponent implements OnInit {
-  inverter:Inverter
+  @Input() inverter:Inverter
   id:string
+  Loaded = false;
+  totalEnergy = 0;
+  Januari = 0; 
+
 
   constructor(
     private inverterService: InverterService,
@@ -18,16 +22,33 @@ export class InverterDetailsComponent implements OnInit {
     private route : ActivatedRoute) { }
 
   ngOnInit() {
-    this.route.params.subscribe(
-      (params: Params) => {
-        this.id = +params['id'] + '';
-        this.inverterService.GetInverter(this.id)
-        .then(inverter => {
-          this.inverter = inverter
-        })
-        .catch(error => console.log(error));
-      }
-    )
+    this.getAllData();
+  }
+
+  getAllData(){
+    Promise.all([
+      //get totaal
+      this.inverterService.GetTotalEnergy(this.inverter._id)
+      .then(total => { 
+        this.totalEnergy = total;
+      })
+      .catch(error => console.log(error)),
+      //get januari totaal
+      this.inverterService.GetMonthEnergy(this.inverter._id,1)
+      .then(januari => {
+        var januariTotals = 0 ;
+        januari.forEach(data => {
+          januariTotals = januariTotals + data.energy;
+        });
+        this.Januari = januariTotals;
+      })
+      .catch(error => console.log(error))
+    ])
+    //alles geladen
+    .then(klaar => {
+      this.Loaded = true
+    })
+    .catch(error => console.log(error));
   }
 
   onInverterData(){
