@@ -88,6 +88,15 @@ export class InverterService {
       .catch(error => console.log(error));
     }
 
+    public GetAllMonthEnergy(month:number):Promise<any>{
+      return this.http.get(this.serverUrl+ "/total/" + month, { headers: this.headers})
+      .toPromise()
+      .then(response => {
+        return response.json();
+      })
+      .catch(error => console.log(error));
+    }
+
     public GetMonthEnergy(id:string,month: number):Promise<any>{
       return this.http.get(this.serverUrl+ "/" + id + "/energy/" + month, { headers: this.headers})
       .toPromise()
