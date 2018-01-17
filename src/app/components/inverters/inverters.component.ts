@@ -96,7 +96,6 @@ export class InvertersComponent implements OnInit {
       this.location.inverters.forEach(inverterid => {
         this._inverterService.GetInverter(inverterid)
         .then(inverter => { 
-          console.log("KK OPVALLEND")
           console.log(inverter);
           newdata.push(inverter);
           this.data = newdata;
