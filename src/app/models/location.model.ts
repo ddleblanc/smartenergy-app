@@ -5,7 +5,7 @@ export class Location {
     public _id
     public name: string;
     public adress: string;
-    public inverters: Inverter[];
+    public inverters = [];
       
     constructor(name: string, adress: string, inverters: Inverter[]) {
         this.name = name;
