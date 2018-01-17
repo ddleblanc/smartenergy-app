@@ -7,10 +7,9 @@ export class Location {
     public adress: string;
     public inverters = [];
       
-    constructor(name: string, adress: string, inverters: Inverter[]) {
+    constructor(name: string, adress: string) {
         this.name = name;
         this.adress = adress;
-        this.inverters = inverters;
 
     }
 }  
