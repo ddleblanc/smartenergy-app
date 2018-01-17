@@ -113,7 +113,6 @@ export class InvertersComponent implements OnInit {
         console.log(this.data)
         this.Loaded = true;
       })
-
     }
   }
 
