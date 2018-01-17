@@ -20,19 +20,10 @@ export class EnergyGainsComponent implements OnInit {
     private route: ActivatedRoute){}
 
   ngOnInit(){
-    this.route
-    .queryParams
-    .subscribe(params => {
         console.log('asdjfdds')
-        this.id = '5a56638dd8504b223c3c76ee'//params['id'];
-        this.inverterService.GetInverter(this.id)
-        .then(inverter => {
-          this.inverter = inverter;
-          this.inverterService.setCurrentInverter(inverter);
-          this.Loaded = true;
-          console.log("inverter sn " + this.inverter.SN)
-        })
-        .catch(error => console.log(error));
-    });
+        this.inverter = this.inverterService.getCurrentInverter()
+        console.log("inverter sn " + this.inverter.SN)
+        this.Loaded = true;
   }
+  
 }
