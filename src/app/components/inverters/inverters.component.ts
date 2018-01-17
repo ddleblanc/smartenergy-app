@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
-import { InverterService } from '../../services/inverter.service'
+import { InverterService } from '../../services/inverter.service';
+import { Location } from '../../models/location.model';
+import { LocationService } from '../../services/location.service';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-inverters',
@@ -9,6 +12,8 @@ import { InverterService } from '../../services/inverter.service'
   styleUrls: ['./inverters.component.css']
 })
 export class InvertersComponent implements OnInit {
+  location: Location;
+  subscription: Subscription;
 
     settings = {
       mode : 'extrenal',
@@ -47,7 +52,7 @@ export class InvertersComponent implements OnInit {
         title: 'Master Control Software Version'
       },
       SN: {
-        title: 'Location'
+        title: 'SN'
       }
     }
     };
@@ -55,21 +60,15 @@ export class InvertersComponent implements OnInit {
 
 
   data= []
-
-
+  Loaded = false;
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private _inverterService: InverterService
+    private _inverterService: InverterService,
+    private locationService: LocationService
   ) {
-
-    this._inverterService.GetInverters().then(res => {
-      this.data = res;
-      console.log(this.data)
-})
-
-   }
+  }
 
    onUserRowSelect(event): void {
        console.log(event.data._id);
@@ -84,10 +83,46 @@ export class InvertersComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    if(this.locationService.getCurrentLocation()){
+      
+      var newdata = []
+      this.location = this.locationService.getCurrentLocation()
+      if(this.location.inverters.length == 0){
+        this.Loaded = true;
+      }
+      console.log("inverter: " + this.location.inverters)
+      var datalength = this.location.inverters.length;
+      var loading = 0;
+      this.location.inverters.forEach(inverterid => {
+        this._inverterService.GetInverter(inverterid)
+        .then(inverter => { 
+          console.log(inverter);
+          newdata.push(inverter);
+          this.data = newdata;
+          loading++
+          if(loading == datalength){
+            this.Loaded = true
+          }
+        })
+        .catch(error => console.log(error))
+      }
+    )
+    }else{
+      this._inverterService.GetInverters().then(res => {
+        this.data = res;
+        console.log(this.data)
+        this.Loaded = true;
+      })
 
-
-
+    }
   }
+
+  ngOnDestroy() {
+    this.locationService.setCurrentLocation(
+      null
+    );
+   }
+
 
 
 }
