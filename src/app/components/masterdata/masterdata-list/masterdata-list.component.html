@@ -1,0 +1,9 @@
+<h2>varianten</h2>
+<ul class="list-group">
+      <app-masterdata-item
+      *ngFor="let variant of propertyVariants; let i = index"
+      [variant]="variant"
+      [index]="i"
+      (click)="onSelect(variant)"
+      ></app-masterdata-item>
+</ul>

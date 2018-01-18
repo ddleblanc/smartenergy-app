@@ -41,6 +41,12 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
+import { MasterdataComponent } from './components/masterdata/masterdata.component';
+import { MasterdataListComponent } from './components/masterdata/masterdata-list/masterdata-list.component';
+import { MasterdataItemComponent } from './components/masterdata/masterdata-list/masterdata-item/masterdata-item.component';
+import { MasterdataEditComponent } from './components/masterdata/masterdata-edit/masterdata-edit.component';
+import { MasterdataDetailsComponent } from './components/masterdata/masterdata-details/masterdata-details.component';
+import { VariantService } from './services/variant.service';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -69,7 +75,12 @@ export function HttpLoaderFactory(http: HttpClient) {
     InverterItemComponent,
     InverterDetailsComponent,
     DashboardComponent,
-    SidenavComponent
+    SidenavComponent,
+    MasterdataComponent,
+    MasterdataListComponent,
+    MasterdataItemComponent,
+    MasterdataEditComponent,
+    MasterdataDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -97,7 +108,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     EnergyService,
     InverterService,
     MasterDataService,
-    LocationService
+    LocationService,
+    VariantService
 
   ],
   bootstrap: [AppComponent]

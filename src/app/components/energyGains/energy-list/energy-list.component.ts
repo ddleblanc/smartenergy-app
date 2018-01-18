@@ -12,7 +12,7 @@ export class EnergyListComponent implements OnInit {
   //@Input() inverter
   ids = [];
   AllEnergy = [];
-  loaded = false
+  loaded = false;
 
   constructor(
     private energyService: EnergyService,
@@ -35,5 +35,5 @@ export class EnergyListComponent implements OnInit {
       })
     .catch(error => console.log(error));
   }
-
+  
 }

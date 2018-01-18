@@ -20,9 +20,7 @@ export class EnergyGainsComponent implements OnInit {
     private route: ActivatedRoute){}
 
   ngOnInit(){
-        console.log('asdjfdds')
         this.inverter = this.inverterService.getCurrentInverter()
-        console.log("inverter sn " + this.inverter.SN)
         this.Loaded = true;
   }
   

@@ -13,6 +13,9 @@ import { EnergyDetailsComponent } from './components/energyGains/energy-details/
 import { InverterDetailsComponent } from './components/inverters/inverter-details/inverter-details.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { Lexer } from '@angular/compiler';
+import { MasterdataComponent } from './components/masterdata/masterdata.component';
+import { MasterdataEditComponent } from './components/masterdata/masterdata-edit/masterdata-edit.component';
+import { MasterdataDetailsComponent } from './components/masterdata/masterdata-details/masterdata-details.component';
 
 
 const appRoutes: Routes = [
@@ -26,7 +29,11 @@ const appRoutes: Routes = [
   { path: 'locations', component: LocationsComponent, children: [
     { path: ':id', component: LocationDetailComponent}
   ]},
-  { path: 'dashboard', component: DashboardComponent},
+  { path: 'masterdata', component: MasterdataComponent, children: [
+    { path: ':id', component: MasterdataDetailsComponent}
+  ]},
+  { path: 'dashboard', component: DashboardComponent}
+  
 
 ];
 
