@@ -22,6 +22,10 @@ export class LocationService {
       return this.current;
     }
 
+    setCurrentLocation(location: Location){
+      this.current = location;
+    }
+
     public getLocations(): Promise<any>{
       return this.http.get(this.serverUrl, { headers: this.headers })
       .toPromise()
@@ -34,9 +38,9 @@ export class LocationService {
       });
     }
 
-    public getLocation(index: number):Promise<Location> {
+    public getLocation(id: string):Promise<Location> {
       console.log('locatie ophalen met id');
-      return this.http.get(this.serverUrl + '/' + this.locations[index]._id, { headers: this.headers })
+      return this.http.get(this.serverUrl + '/' + id, { headers: this.headers })
         .toPromise()
         .then(response => {
             console.dir(response.json());
@@ -47,10 +51,10 @@ export class LocationService {
         });
   }
 
-  public deleteLocation(index: number){
+  public deleteLocation(id: string){
     console.log("locatie verwijderen");
     
-    this.http.delete(this.serverUrl + "/" + this.locations[index]._id)
+    this.http.delete(this.serverUrl + "/" + id)
       .toPromise()
       .then( () => {
         console.log("locatie verwijderd")
