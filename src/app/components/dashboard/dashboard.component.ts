@@ -28,6 +28,7 @@ export class DashboardComponent implements OnInit {
   state: string = 'invisible';
   masterData: string;
   showSelected: boolean;
+  maandenData = [];
 
 
   animate() {
@@ -36,6 +37,7 @@ export class DashboardComponent implements OnInit {
 
   constructor(private router: Router,
     private route: ActivatedRoute,
+
     private _inverterService: InverterService
   ) {
 
@@ -58,15 +60,44 @@ export class DashboardComponent implements OnInit {
 
   ngAfterViewInit() {
 
+    private inverterService : InverterService
+  ) { }
 
+  ngOnInit(){
+    var maandenData = [];
+    var maanden = [1,2,3,4,5,6,7,8,9,10,11,12];
+    maanden.forEach(maand =>{
+      this.inverterService.GetAllMonthEnergy(maand)
+      .then(maand => {
+        var maandTotals = 0 ;
+        maand.forEach(data => {
+          maandTotals = maandTotals + data.energy;
+        });
+        if(maandTotals == null){
+          maandTotals = 0;
+        }
+        maandenData.push(maandTotals);
+        if(maandenData.length == maanden.length){
+          console.log(maandenData);
+          this.maandenData = maandenData;
+          this.onLoaded()
+        }
+      })
+      .catch(error => console.log(error))
+    })
 
+    
+      
+  }
+
+  onLoaded() {
     this.chart = new Chart('line', {
       type: 'line',
       data: {
-        labels: ["maandag", "dinsdag", "woensdag", "donderdag", "vrijdag"],
+        labels: ["jan", "feb", "mar", "apr", "mei", "jun", "jul", "aug", "sep", "okt", "nov", "dec"],
         datasets: [
           {
-            data: [132, 110, 200, 245, 350],
+            data: this.maandenData,
             borderColor: "#BF0029",
             fill: true
           },
@@ -108,15 +139,6 @@ export class DashboardComponent implements OnInit {
     });
 
     console.log(this.chart);
-
-
-
   }
-
-  ngOnInit() {
-
-  }
-
-
 
 }
