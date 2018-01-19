@@ -43,6 +43,7 @@ export class EnergyEditComponent implements OnInit {
     this.inverterService.GetSolarPanel(this.id)
     .then(data => {
       this.masterdataService.addEnergy(this.dataForm.value,this.inverterService.getCurrentInverter());
+      this.router.navigate(['energyGains']);
     })
     .catch(error => console.log(error))
   }

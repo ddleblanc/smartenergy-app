@@ -55,7 +55,7 @@ export class MasterDataService {
 
     public addEnergy(energy: MasterData,inverter : Inverter){
       console.log(energy);
-        this.http.post(this.serverUrl + "/" + inverter.SN ,{ name : energy.name, time : energy.time, energy : energy.energy, raw : energy.raw })
+        this.http.post(this.serverUrl + "/" + inverter.SN ,{ "name" : energy.name, "time" : energy.time, "energy" : energy.energy, "raw" : energy.raw })
         .toPromise()
         .then(energy => {
             this.AllEnergy = energy.json()
