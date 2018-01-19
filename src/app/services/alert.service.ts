@@ -32,6 +32,39 @@ export class AlertService {
         return this.handleError(error);
       });
   }
+
+  public getAlert(id: string):Promise<Alert> {
+    console.log('alert ophalen met id');
+    return this.http.get(this.serverUrl + '/' + id, { headers: this.headers })
+      .toPromise()
+      .then(response => {
+          console.dir(response.json());
+          return response.json() as Alert;
+      })
+      .catch( error => {
+          return this.handleError(error);
+      });
+}
+
+
+public deleteAlert(id: string){
+  console.log("alert verwijderen");
+
+  this.http.delete(this.serverUrl + "/" + id)
+    .toPromise()
+    .then( () => {
+      console.log("alert verwijderd")
+      this.GetAlerts()
+      .then(
+        alerts => {
+          this.alerts = alerts
+          this.alertsChanged.next(this.alerts.slice());
+        }
+      )
+      .catch(error => console.log(error));
+  })
+    .catch( error => { return this.handleError(error) } );
+}
   private handleError(error: any): Promise<any> {
     console.log('handleError');
     return Promise.reject(error.message || error);
