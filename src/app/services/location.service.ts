@@ -51,6 +51,33 @@ export class LocationService {
         });
   }
 
+  public addLocation(location:Location){
+    console.log(location);
+    this.http.post(this.serverUrl,{location})
+    .toPromise()
+    .then(response => {
+      this.getLocations()
+      .then((locations) => {
+        this.locationsChanged.next(locations.slice());
+      })
+      .catch(error => console.log(error))
+    })
+    .catch(error => console.log(error))
+  }
+
+  public editLocation(location : Location, id:String){
+    this.http.put(this.serverUrl + "/" + id ,{location})
+    .toPromise()
+    .then(response => {
+      this.getLocations()
+      .then((locations) => {
+        this.locationsChanged.next(locations.slice());
+      })
+      .catch(error => console.log(error))
+    })
+    .catch(error => console.log(error))
+  }
+
   public deleteLocation(id: string){
     console.log("locatie verwijderen");
     
@@ -69,6 +96,7 @@ export class LocationService {
     })
       .catch( error => { return this.handleError(error) } );
   }
+  
 
 
     private handleError(error: any): Promise<any> {

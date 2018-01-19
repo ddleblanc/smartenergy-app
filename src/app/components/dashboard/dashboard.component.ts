@@ -4,6 +4,7 @@ import { Chart } from 'chart.js';
 import { trigger, state, style, transition, animate } from '@angular/animations'
 import { InverterService } from '../../services/inverter.service';
 
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -25,7 +26,10 @@ export class DashboardComponent implements OnInit {
 
   chart = [];
   state: string = 'invisible';
-  maandenData = [];
+  masterData: string;
+  showSelected: boolean;
+  private maandenData = [];
+
 
   animate() {
     this.state = this.state == 'invisible' ? 'visible' : 'invisible';
@@ -33,14 +37,36 @@ export class DashboardComponent implements OnInit {
 
   constructor(private router: Router,
     private route: ActivatedRoute,
-    private inverterService : InverterService
-  ) { }
+
+    private _inverterService: InverterService
+  ) {
+
+    this.showSelected = false;
+
+    this._inverterService.Export().then(res => {
+      this.masterData = JSON.stringify(res);
+
+    })
+  }
+
+  ShowData() {
+    this.showSelected = true;
+  }
+
+  HideData() {
+    this.showSelected = false;
+  }
+
+
+  ngAfterViewInit() {
+
+}
 
   ngOnInit(){
     var maandenData = [];
     var maanden = [1,2,3,4,5,6,7,8,9,10,11,12];
     maanden.forEach(maand =>{
-      this.inverterService.GetAllMonthEnergy(maand)
+      this._inverterService.GetAllMonthEnergy(maand)
       .then(maand => {
         var maandTotals = 0 ;
         maand.forEach(data => {
@@ -59,11 +85,11 @@ export class DashboardComponent implements OnInit {
       .catch(error => console.log(error))
     })
 
-    
-      
+
+
   }
 
-  onLoaded() {
+  onLoaded(){
     this.chart = new Chart('line', {
       type: 'line',
       data: {
@@ -112,6 +138,5 @@ export class DashboardComponent implements OnInit {
     });
 
     console.log(this.chart);
-  }
-
+}
 }
