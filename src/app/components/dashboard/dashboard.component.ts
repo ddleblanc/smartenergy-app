@@ -28,7 +28,7 @@ export class DashboardComponent implements OnInit {
   state: string = 'invisible';
   masterData: string;
   showSelected: boolean;
-  maandenData = [];
+  private maandenData = [];
 
 
   animate() {
@@ -60,14 +60,13 @@ export class DashboardComponent implements OnInit {
 
   ngAfterViewInit() {
 
-    private inverterService : InverterService
-  ) { }
+}
 
   ngOnInit(){
     var maandenData = [];
     var maanden = [1,2,3,4,5,6,7,8,9,10,11,12];
     maanden.forEach(maand =>{
-      this.inverterService.GetAllMonthEnergy(maand)
+      this._inverterService.GetAllMonthEnergy(maand)
       .then(maand => {
         var maandTotals = 0 ;
         maand.forEach(data => {
@@ -86,11 +85,11 @@ export class DashboardComponent implements OnInit {
       .catch(error => console.log(error))
     })
 
-    
-      
+
+
   }
 
-  onLoaded() {
+  onLoaded(){
     this.chart = new Chart('line', {
       type: 'line',
       data: {
@@ -139,6 +138,5 @@ export class DashboardComponent implements OnInit {
     });
 
     console.log(this.chart);
-  }
-
+}
 }
