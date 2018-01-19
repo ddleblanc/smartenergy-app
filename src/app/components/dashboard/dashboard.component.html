@@ -4,7 +4,7 @@
       <div class="col-md-3 card-container">
         <div class="card">
           <div class="dash-button-icon">
-          <span class="fa fa-map-marker fa-4x location-fa"></span>
+            <span class="fa fa-map-marker fa-4x location-fa"></span>
           </div>
           <h4 class="dash-button-title" translate>nav-locations</h4>
         </div>
@@ -48,5 +48,10 @@
         <canvas id="doughnut">{{ chart }}</canvas>
       </div>
     </div>
+  </div>
+  <div style="margin-top: 40px;">
+    <button class="btn" style="background-color: #BF0029; color: white;" (click)="ShowData()">Show MasterData</button>
+    <button class="btn" style="background-color: #BF0029; color: white;"  (click)="HideData()">Hide MasterData</button>
+    <div class="jumbotron" *ngIf="showSelected" style="margin-top: 20px;">{{masterData}}</div>
   </div>
 </div>

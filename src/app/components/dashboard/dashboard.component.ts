@@ -4,6 +4,7 @@ import { Chart } from 'chart.js';
 import { trigger, state, style, transition, animate } from '@angular/animations'
 import { InverterService } from '../../services/inverter.service';
 
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -25,7 +26,10 @@ export class DashboardComponent implements OnInit {
 
   chart = [];
   state: string = 'invisible';
+  masterData: string;
+  showSelected: boolean;
   maandenData = [];
+
 
   animate() {
     this.state = this.state == 'invisible' ? 'visible' : 'invisible';
@@ -33,6 +37,29 @@ export class DashboardComponent implements OnInit {
 
   constructor(private router: Router,
     private route: ActivatedRoute,
+
+    private _inverterService: InverterService
+  ) {
+
+    this.showSelected = false;
+
+    this._inverterService.Export().then(res => {
+      this.masterData = JSON.stringify(res);
+
+    })
+  }
+
+  ShowData() {
+    this.showSelected = true;
+  }
+
+  HideData() {
+    this.showSelected = false;
+  }
+
+
+  ngAfterViewInit() {
+
     private inverterService : InverterService
   ) { }
 
