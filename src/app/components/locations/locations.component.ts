@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { LocalDataSource } from 'ng2-smart-table';
+import { LocationService } from '../../services/location.service';
 
 @Component({
   selector: 'app-locations',
@@ -27,48 +28,47 @@ export class LocationsComponent implements OnInit {
       confirmDelete: false,
     },
     columns: {
-      id: {
+      _id: {
         title: 'ID'
       },
       name: {
         title: 'Location'
       },
-      inverters: {
-        title: 'Inverters',
-
-
-       }
+      adress: {
+        title: 'Adress'
+      }
       }
     };
 
 
-  data = [
-    {
-      id: 1,
-      name: "Avans Breda",
-      inverters: "Inverter1"
-    },
-    {
-      id: 2,
-      name: "Avans Nunspeet"
-    }
-  ];
+  data = [];
 
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-  ) { }
+    private _locationService: LocationService
+  ) { 
+    this._locationService.getLocations()
+    .then(res => {
+      this.data = res;
+      console.log(this.data)
+    })
+  }
 
   onUserRowSelect(event): void {
-      console.log(event);
-      // this.router.navigate(['inverters', event]),{relativeTo: this.route}
-  }
+    console.log(event.data._id);
+    let id = event.data._id;
+    this._locationService.getLocation(id)
+    .then(location => { 
+     this._locationService.setCurrentLocation(location);
+     this.router.navigate(['inverters']),{relativeTo: this.route}
+    })
+    .catch(error => console.log(error))
+    }
 
   ngOnInit(): void {
 
   }
-
-
 }
 

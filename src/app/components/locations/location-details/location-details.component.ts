@@ -10,7 +10,7 @@ import { ActivatedRoute,Router, Params } from '@angular/router';
 })
 export class LocationDetailComponent implements OnInit {
   location: Location;
-  id: number;
+  id: string;
 
   constructor(private locationService: LocationService,
               private route: ActivatedRoute,
@@ -24,16 +24,11 @@ export class LocationDetailComponent implements OnInit {
     this.route.params
       .subscribe(
         (params: Params) => {
-          this.id = +params['id'];
+          this.id = params['id'];
           this.locationService.getLocation(this.id)
             .then(location => this.location = location)
             .catch(error => console.log(error));
         }
       );
-  }
-
-  onDeleteLocation(){
-    this.locationService.deleteLocation(this.id);
-    this.router.navigate(['/locations']);
   }
 }

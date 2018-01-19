@@ -12,6 +12,7 @@ import { LocationDetailComponent } from './components/locations/location-details
 import { EnergyDetailsComponent } from './components/energyGains/energy-details/energy-details.component';
 import { InverterDetailsComponent } from './components/inverters/inverter-details/inverter-details.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { Lexer } from '@angular/compiler';
 
 
 const appRoutes: Routes = [
@@ -22,8 +23,9 @@ const appRoutes: Routes = [
   { path: 'inverters', component: InvertersComponent, children: [
     { path: ':id', component: InverterDetailsComponent}
   ]},
-
-  { path: 'locations', component: LocationsComponent},
+  { path: 'locations', component: LocationsComponent, children: [
+    { path: ':id', component: LocationDetailComponent}
+  ]},
   { path: 'dashboard', component: DashboardComponent},
 
 ];
