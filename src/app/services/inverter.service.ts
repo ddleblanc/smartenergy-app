@@ -3,6 +3,8 @@ import { Http, Headers, URLSearchParams } from '@angular/http';
 import { environment } from '../../environments/environment';
 import 'rxjs/add/operator/toPromise';
 import { Inverter } from '../models/inverter.model';
+import { Subject } from 'rxjs/Subject';
+
 
 @Injectable()
 export class InverterService {
@@ -14,6 +16,9 @@ export class InverterService {
     private current:Inverter = null
 
     constructor(private http: Http) { }
+
+    invertersChanged = new Subject<Inverter[]>();
+    
 
     setCurrentInverter(inverter: Inverter){
       this.current = inverter;
@@ -104,6 +109,52 @@ export class InverterService {
         return response.json();
       })
       .catch(error => console.log(error));
+    }
+
+    public editInverter(inverter : Inverter, id:String){
+      this.http.put(this.serverUrl + "/" + id ,{inverter})
+      .toPromise()
+      .then(response => {
+        this.GetInverters()
+        .then((inverters) => {
+          this.invertersChanged.next(inverters.slice());
+        })
+        .catch(error => console.log(error))
+      })
+      .catch(error => console.log(error))
+    }
+
+  public addInverter(inverter:Inverter){
+    console.log(inverter);
+    this.http.post(this.serverUrl,{inverter})
+    .toPromise()
+    .then(response => {
+      this.GetInverters()
+      .then((inverters) => {
+        this.invertersChanged.next(inverters.slice());
+      })
+      .catch(error => console.log(error))
+    })
+    .catch(error => console.log(error))
+  }
+  
+    public deleteInverter(id: string){
+      console.log("inverter verwijderen");
+      
+      this.http.delete(this.serverUrl + "/" + id)
+        .toPromise()
+        .then( () => {
+          console.log("inverter verwijderd")
+          this.GetInverters()
+          .then(
+            inverters => {
+              this.inverters = inverters
+              this.invertersChanged.next(this.inverters.slice());
+            }
+          )
+          .catch(error => console.log(error));
+      })
+        .catch( error => { return this.handleError(error) } );
     }
     
     private handleError(error: any): Promise<any> {

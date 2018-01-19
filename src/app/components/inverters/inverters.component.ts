@@ -16,43 +16,51 @@ export class InvertersComponent implements OnInit {
   subscription: Subscription;
 
     settings = {
-      mode : 'extrenal',
+      mode : 'inline',
       actions: { columnTitle: ''},
       add: {
       addButtonContent: '<i class="fa fa-plus-square fa-3x faAddStyle" aria-hidden="true"></i>',
       createButtonContent: '<i class="fa fa-check-square fa-2x faAddStyle" aria-hidden="true"></i>',
       cancelButtonContent: '<i class="fa fa-window-close fa-2x faDeleteStyle" aria-hidden="true"></i>',
+      confirmCreate: true
     },
       edit: {
       editButtonContent: '<i class="fa fa-pencil-square fa-2x faEditStyle" aria-hidden="true"></i>',
       saveButtonContent: '<i class="fa fa-check-square fa-2x faAddStyle" aria-hidden="true"></i>',
       cancelButtonContent: '<i class="fa fa-window-close fa-2x faDeleteStyle" aria-hidden="true"></i>',
+      confirmSave: true,
     },
     delete: {
       deleteButtonContent: '<i class="fa fa-window-close fa-2x faDeleteStyle" aria-hidden="true"></i>',
-      confirmDelete: false,
+      confirmDelete: true,
     },
     columns: {
-      _id: {
-        title: 'ID'
-      },
       DeviceModel: {
-        title: 'Model'
+        title: 'DeviceModel'
       },
       DeviceName: {
-        title: 'Name'
+        title: 'DeviceName'
+      },
+      Online: {
+        title: 'Online'
       },
       DisplaySoftwareVersion: {
-        title: 'Software Version'
+        title: 'DisplaySoftwareVersion'
       },
       Location: {
         title: 'Location'
       },
       MasterControlSoftwareVersion: {
-        title: 'Master Control Software Version'
+        title: 'MasterControlSoftwareVersion'
+      },
+      SlaveControlVersion: {
+        title: 'SlaveControlVersion'
       },
       SN: {
         title: 'SN'
+      },
+      locationID: {
+        title: 'locationID'
       }
     }
     };
@@ -81,6 +89,29 @@ export class InvertersComponent implements OnInit {
        .catch(error => console.log(error))
        
    }
+
+   onDeleteConfirm(event): void {
+    console.log(event.data);
+    event.confirm.resolve();
+    console.log("inverter verwijderen")
+    let id = event.data._id;
+    this._inverterService.deleteInverter(id);
+  }
+
+  onCreate(event): void {
+    console.log(event.newData);
+    event.confirm.resolve();
+    this._inverterService.addInverter(event.newData);
+    console.log("inverter toegevoegd")
+  }
+
+  onEdit(event): void {
+    console.log(event.data);
+    console.log(event.newData);
+    event.confirm.resolve();
+    this._inverterService.editInverter(event.newData,event.newData._id);
+    
+  }
 
   ngOnInit(): void {
     if(this.locationService.getCurrentLocation()){
