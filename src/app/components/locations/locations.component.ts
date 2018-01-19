@@ -13,24 +13,24 @@ export class LocationsComponent implements OnInit {
 
 
     settings = {
+    mode: "inline",
       add: {
       addButtonContent: '<i class="fa fa-plus-square fa-3x faAddStyle" aria-hidden="true"></i>',
       createButtonContent: '<i class="fa fa-check-square fa-2x faAddStyle" aria-hidden="true"></i>',
       cancelButtonContent: '<i class="fa fa-window-close fa-2x faDeleteStyle" aria-hidden="true"></i>',
+      confirmCreate: true,
     },
       edit: {
       editButtonContent: '<i class="fa fa-pencil-square fa-2x faEditStyle" aria-hidden="true"></i>',
       saveButtonContent: '<i class="fa fa-check-square fa-2x faAddStyle" aria-hidden="true"></i>',
       cancelButtonContent: '<i class="fa fa-window-close fa-2x faDeleteStyle" aria-hidden="true"></i>',
+      confirmSave: true,
     },
     delete: {
       deleteButtonContent: '<i class="fa fa-window-close fa-2x faDeleteStyle" aria-hidden="true"></i>',
-      confirmDelete: false,
+      confirmDelete: true,
     },
     columns: {
-      _id: {
-        title: 'ID'
-      },
       name: {
         title: 'Location'
       },
@@ -65,6 +65,29 @@ export class LocationsComponent implements OnInit {
      this.router.navigate(['inverters']),{relativeTo: this.route}
     })
     .catch(error => console.log(error))
+    }
+
+    onDeleteConfirm(event): void {
+      console.log(event.data);
+      event.confirm.resolve();
+      console.log("location verwijderen")
+      let id = event.data._id;
+      this._locationService.deleteLocation(id);
+    }
+
+    onCreate(event): void {
+      console.log(event.newData);
+      event.confirm.resolve();
+      this._locationService.addLocation(event.newData);
+      console.log("location toegevoegd")
+    }
+
+    onEdit(event): void {
+      console.log(event.data);
+      console.log(event.newData);
+      event.confirm.resolve();
+      this._locationService.editLocation(event.newData,event.newData._id);
+      
     }
 
   ngOnInit(): void {

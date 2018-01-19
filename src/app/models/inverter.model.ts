@@ -3,7 +3,7 @@ export class Inverter {
     public _id
     SN: String
     DeviceName: String
-    Online: Boolean
+    Online: String
     Location: String
     DeviceModel: String
     DisplaySoftwareVersion: String
